@@ -4,10 +4,11 @@ use std::process;
 use grep::Config;
 fn main() {
     // env::args gives us args passed to program, collect makes them a collection
-    let args: Vec<String> = env::args().collect();
-    // unwrap_or_else in OK case returns value in OK
-    // in error case will execute closure with err
-    let config: Config = Config::new(&args)
+    // let args: Vec<String> = env::args().collect();
+    // // unwrap_or_else in OK case returns value in OK
+    // // in error case will execute closure with err
+    // let config: Config = Config::new(&args)
+    let config: Config = Config::new(env::args())
     .unwrap_or_else(|err| {
         println!("Problem parsing arguments: {}", err);
         process::exit(1);
